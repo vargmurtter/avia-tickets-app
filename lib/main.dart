@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'colors.dart';
+import 'screens/main_screen.dart';
 
 void main() {
   runApp(const AviaApp());
@@ -9,11 +11,12 @@ class AviaApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Center(
-          child: Text('Hello World!', style: TextStyle(fontFamily: "Pro-Display"),),
+        backgroundColor: baseBlackColor,
+        body: const SafeArea(
+          child: MainScreen()
         ),
       ),
     );
