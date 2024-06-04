@@ -1,10 +1,10 @@
-import 'package:avia_tickets/models/offers_model.dart';
-import 'package:avia_tickets/service/api_service.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import '../colors.dart';
+import '../models/offers_model.dart';
+import '../service/api_service.dart';
 import '../widgets/listable_item.dart';
-// import '../images.dart';
+
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
