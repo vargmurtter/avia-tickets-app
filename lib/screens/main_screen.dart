@@ -1,5 +1,9 @@
+import 'package:avia_tickets/models/offers_model.dart';
+import 'package:avia_tickets/service/api_service.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import '../colors.dart';
+import '../widgets/listable_item.dart';
 // import '../images.dart';
 
 class MainScreen extends StatelessWidget {
@@ -107,79 +111,66 @@ class MainScreen extends StatelessWidget {
           height: 20,
         ),
 
-        SizedBox(
-          height: 230,
-          child: ListView.builder(
-              itemCount: 3,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (BuildContext context, int index) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Wrap(
-                    // crossAxisAlignment: CrossAxisAlignment.start,
-                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    direction: Axis.vertical,
-                    spacing: 8,
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(16), // Image border
-                        child: Image.asset('assets/images/cover_0.png',
-                            width: 132, height: 132, fit: BoxFit.cover),
-                      ),
-                      const Text(
-                        "Die Antwoord",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      const Text(
-                        "Будапешт",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                      Row(
-                        children: [
-                          Icon(Icons.place, color: baseGrey7Color, size: 24,),
-                          const Text(
-                            "от 22 264 ₽",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                );
-              }),
-        ),
+        _getOffers(),
 
-        Center(
-          child: ElevatedButton(
-            onPressed: () {},
-            style: ElevatedButton.styleFrom(
-              fixedSize: const Size(328, 42),
-              backgroundColor: baseGrey3Color,
-              elevation: 0,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        Padding(
+          padding: const EdgeInsets.only(top: 10),
+          child: Center(
+            child: ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                fixedSize: const Size(328, 42),
+                backgroundColor: baseGrey3Color,
+                elevation: 0,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+              ),
+              child: const Text("Показать все места", style: TextStyle(
+                color: Colors.white,
+                fontFamily: "Pro-Display",
+                fontWeight: FontWeight.w400,
+                fontSize: 16,
+                fontStyle: FontStyle.italic
+              )), 
             ),
-            child: const Text("Показать все места", style: TextStyle(
-              color: Colors.white,
-              fontFamily: "Pro-Display",
-              fontWeight: FontWeight.w400,
-              fontSize: 16,
-              fontStyle: FontStyle.italic
-            )), 
           ),
         ),
       ],
     );
   }
+
+  FutureBuilder _getOffers() {
+    final apiService = ApiService(Dio(BaseOptions(contentType: "application/json")));
+    return FutureBuilder(
+      future: apiService.getOffers(), 
+      builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+        if (snapshot.connectionState == ConnectionState.done){
+          final OffersModel offersData = snapshot.data!;
+          return _offersList(offersData);
+        } else {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      }
+    );
+  }
+
+  Widget _offersList(OffersModel offersData) {
+    return SizedBox(
+          height: 230,
+          child: ListView.builder(
+              itemCount: offersData.offers.length,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (BuildContext context, int index) {
+                return ListableItem(
+                  id: offersData.offers[index].id,
+                  title: offersData.offers[index].title,
+                  town: offersData.offers[index].town,
+                  price: offersData.offers[index].price.value,
+                );
+              }),
+        );
+  }
 }
+
+
