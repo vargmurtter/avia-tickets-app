@@ -12,6 +12,7 @@ dependencies:
   retrofit: ^4.1.0
   dio: ^5.4.3+1
   json_annotation: ^4.9.0
+  backdrop_modal_route: ^2.0.4
 
 dev_dependencies:
   flutter_test:

@@ -18,3 +18,4 @@ Color specRedColor = const Color(0xFFFF5E5E);
 Color specOrangeColor = const Color(0xFFF36E36);
 
 Color specWhiteColor = const Color(0xFFD9D9D9);
+Color specSearchPanelColor = const Color(0xFF242529);

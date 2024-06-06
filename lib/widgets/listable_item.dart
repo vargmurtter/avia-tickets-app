@@ -5,11 +5,11 @@ import '../colors.dart';
 class ListableItem extends StatelessWidget {
   final int id;
   final String title;
-  final String town;
+  final String subtitle;
   final int price;
 
   const ListableItem({
-    super.key, required this.id, required this.title, required this.town, required this.price,
+    super.key, required this.id, required this.title, required this.subtitle, required this.price,
   });
 
   @override
@@ -34,7 +34,7 @@ class ListableItem extends StatelessWidget {
             ),
           ),
           Text(
-            town,
+            subtitle,
             style: const TextStyle(
               color: Colors.white,
               fontSize: 14,
