@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'colors.dart';
 import 'screens/main_screen.dart';
 
 void main() {
@@ -13,12 +12,7 @@ class AviaApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        backgroundColor: baseBlackColor,
-        body: const SafeArea(
-          child: MainScreen()
-        ),
-      ),
+      home: MainScreen()
     );
   }
 }

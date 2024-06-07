@@ -13,6 +13,7 @@ dependencies:
   dio: ^5.4.3+1
   json_annotation: ^4.9.0
   backdrop_modal_route: ^2.0.4
+  flutter_svg: ^2.0.10+1
 
 dev_dependencies:
   flutter_test:
@@ -26,6 +27,7 @@ flutter:
   uses-material-design: true
   assets:
       - assets/images/
+      - assets/icons/
   fonts:
     - family: Pro-Display
       fonts:
