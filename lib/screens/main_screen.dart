@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import '../colors.dart';
+import '../fonts.dart';
 import '../models/offers_model.dart';
 import '../service/api_service.dart';
 import '../widgets/listable_item.dart';
@@ -27,7 +28,7 @@ class MainScreen extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         color: specWhiteColor,
-                        fontFamily: "Pro-Display",
+                        fontFamily: mainFont,
                         fontWeight: FontWeight.w600,
                         fontSize: 22)),
               ),
@@ -83,7 +84,7 @@ class MainScreen extends StatelessWidget {
                             children: [
                               Text("Минск",
                                   style: TextStyle(
-                                    fontFamily: "Pro-Display",
+                                    fontFamily: mainFont,
                                     fontSize: 16,
                                     fontWeight: FontWeight.w600,
                                     color: baseWhiteColor,
@@ -95,7 +96,7 @@ class MainScreen extends StatelessWidget {
                               ),
                               Text("Куда - Турция",
                                   style: TextStyle(
-                                    fontFamily: "Pro-Display",
+                                    fontFamily: mainFont,
                                     fontSize: 16,
                                     fontWeight: FontWeight.w600,
                                     color: baseGrey6Color,
@@ -119,7 +120,7 @@ class MainScreen extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 16),
               child: Text("Музыкально отлететь",
                   style: TextStyle(
-                    fontFamily: "Pro-Display",
+                    fontFamily: mainFont,
                     fontWeight: FontWeight.w600,
                     fontSize: 22,
                     color: Colors.white,
@@ -147,7 +148,7 @@ class MainScreen extends StatelessWidget {
                   child: const Text("Показать все места",
                       style: TextStyle(
                           color: Colors.white,
-                          fontFamily: "Pro-Display",
+                          fontFamily: mainFont,
                           fontWeight: FontWeight.w400,
                           fontSize: 16,
                           fontStyle: FontStyle.italic)),
