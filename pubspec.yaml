@@ -12,7 +12,6 @@ dependencies:
   retrofit: ^4.1.0
   dio: ^5.4.3+1
   json_annotation: ^4.9.0
-  backdrop_modal_route: ^2.0.4
   flutter_svg: ^2.0.10+1
 
 dev_dependencies:

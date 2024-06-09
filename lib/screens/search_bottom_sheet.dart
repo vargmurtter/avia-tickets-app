@@ -2,27 +2,22 @@ import 'package:flutter/material.dart';
 
 import '../colors.dart';
 
-class SearchBackdrop extends StatelessWidget {
-  const SearchBackdrop({
+class SearchBottomSheet extends StatelessWidget {
+  const SearchBottomSheet({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onVerticalDragUpdate: (details) {
-        if (details.delta.dy > 8) {
-          return Navigator.pop(context);
-        }
-      },
+    return FractionallySizedBox(
+      heightFactor: 0.95,
       child: Container(
+          height: 1000,
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
           child: Column(
             children: [
               _topTrigger(),
-              Container(
-                  // decoration: BoxDecoration(),
-                  child: const Column(
+              const Column(
                 children: [
                   Row(
                     children: [
@@ -36,7 +31,7 @@ class SearchBackdrop extends StatelessWidget {
                     ],
                   )
                 ],
-              ))
+              )
             ],
           )),
     );

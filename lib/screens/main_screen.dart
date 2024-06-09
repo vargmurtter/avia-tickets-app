@@ -1,12 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:backdrop_modal_route/backdrop_modal_route.dart';
 import '../colors.dart';
 import '../models/offers_model.dart';
 import '../service/api_service.dart';
 import '../widgets/listable_item.dart';
 import '../widgets/main_menu.dart';
-import 'search_backdrop.dart';
+import 'search_bottom_sheet.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -45,16 +44,17 @@ class MainScreen extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(16),
                 child: GestureDetector(
-                  onTap: () async {
-                    // with inline widget
-                    await Navigator.push(
-                      context,
-                      BackdropModalRoute<void>(
-                          overlayContentBuilder: (context) {
-                            return SearchBackdrop();
-                          },
-                          backgroundColor: specSearchPanelColor, safeAreaTop: false),
-                    );
+                  onTap: () {
+                    showModalBottomSheet(
+                        context: context,
+                        isScrollControlled: true,
+                        backgroundColor: specBottomSheetColor,
+                        shape: const RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.vertical(top: Radius.circular(16)),
+                        ),
+                        builder: (BuildContext context) =>
+                            const SearchBottomSheet());
                   },
                   child: Container(
                     padding: const EdgeInsets.all(16),
@@ -109,11 +109,11 @@ class MainScreen extends StatelessWidget {
                 ),
               ),
             ),
-        
+
             const SizedBox(
               height: 30,
             ),
-        
+
             // music section
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16),
@@ -125,13 +125,13 @@ class MainScreen extends StatelessWidget {
                     color: Colors.white,
                   )),
             ),
-        
+
             const SizedBox(
               height: 20,
             ),
-        
+
             _getOffers(),
-        
+
             Padding(
               padding: const EdgeInsets.only(top: 10),
               child: Center(
