@@ -9,13 +9,24 @@ import '../widgets/main_menu.dart';
 import 'search_bottom_sheet.dart';
 
 
-class MainScreen extends StatelessWidget {
+class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final offersBloc = OffersBloc();
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  final offersBloc = OffersBloc();
+
+  @override
+  void initState() {
+    super.initState();
     offersBloc.add(OffersGetEvent());
+  }
+
+  @override
+  Widget build(BuildContext context) {
 
     return BlocProvider<OffersBloc>(
       create: (BuildContext context) => offersBloc,
