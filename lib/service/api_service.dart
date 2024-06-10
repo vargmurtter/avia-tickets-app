@@ -1,4 +1,4 @@
-import '../models/offers_model.dart';
+import '../features/offers/models/offers_model.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/http.dart';
 

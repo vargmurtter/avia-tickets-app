@@ -4,7 +4,7 @@ part 'offers_model.g.dart';
 
 @JsonSerializable()
 class OffersModel {
-  List<OffersListModel> offers;
+  List<OfferModel> offers;
 
   OffersModel({required this.offers});
 
@@ -13,20 +13,20 @@ class OffersModel {
 }
 
 @JsonSerializable()
-class OffersListModel {
+class OfferModel {
   int id;
   String title;
   String town;
   OfferPriceModel price;
 
-  OffersListModel({
+  OfferModel({
     required this.id,
     required this.title,
     required this.town,
     required this.price,
   });
 
-  factory OffersListModel.fromJson(Map<String, dynamic> json) => _$OffersListModelFromJson(json);
+  factory OfferModel.fromJson(Map<String, dynamic> json) => _$OffersListModelFromJson(json);
   Map<String, dynamic> toJson() => _$OffersListModelToJson(this);
 }
 

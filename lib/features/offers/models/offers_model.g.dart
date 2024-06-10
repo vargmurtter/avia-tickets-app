@@ -8,7 +8,7 @@ part of 'offers_model.dart';
 
 OffersModel _$OffersModelFromJson(Map<String, dynamic> json) => OffersModel(
       offers: (json['offers'] as List<dynamic>)
-          .map((e) => OffersListModel.fromJson(e as Map<String, dynamic>))
+          .map((e) => OfferModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
@@ -17,15 +17,15 @@ Map<String, dynamic> _$OffersModelToJson(OffersModel instance) =>
       'offers': instance.offers,
     };
 
-OffersListModel _$OffersListModelFromJson(Map<String, dynamic> json) =>
-    OffersListModel(
+OfferModel _$OffersListModelFromJson(Map<String, dynamic> json) =>
+    OfferModel(
       id: (json['id'] as num).toInt(),
       title: json['title'] as String,
       town: json['town'] as String,
       price: OfferPriceModel.fromJson(json['price'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$OffersListModelToJson(OffersListModel instance) =>
+Map<String, dynamic> _$OffersListModelToJson(OfferModel instance) =>
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
